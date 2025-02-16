@@ -30,7 +30,7 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="flex flex-col items-center min-h-screen bg-gradient-to-b from-[#643470] to-[#BF63D6] p-6">
+    <div className="flex flex-col items-center min-h-screen bg-gradient-to-b from-[#2E0249] to-[#8D33A5] p-6">
       {/* OmniSight Heading */}
       <h1 className="text-5xl font-bold text-white text-center mb-10">OmniSight</h1>
 

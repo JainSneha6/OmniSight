@@ -1,107 +1,132 @@
-import cv2
+import time
 import numpy as np
+import eventlet
+from flask import Flask
+from flask_socketio import SocketIO
 from ultralytics import YOLO
-from deepface import DeepFace
-import mediapipe as mp
+import cv2
 
-# Load YOLOv8 for object detection
-model = YOLO("yolov8n.pt")  # Using YOLOv8 nano model
+eventlet.monkey_patch()
 
-# Initialize MediaPipe Pose for body posture analysis
-mp_pose = mp.solutions.pose
-pose = mp_pose.Pose()
+app = Flask(__name__)
+socketio = SocketIO(app, cors_allowed_origins="*")
 
-# Function to analyze facial expressions
-def analyze_face(frame):
-    try:
-        emotions = DeepFace.analyze(frame, actions=["emotion"], enforce_detection=False)
-        if emotions:
-            return emotions[0]['dominant_emotion']
-    except:
-        return None
-    return None
+# Load YOLO model
+model = YOLO("yolov8n.pt")
 
-# Function to analyze body posture using MediaPipe
-def analyze_body(frame):
-    frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-    results = pose.process(frame_rgb)
-    return results.pose_landmarks
+GRID_ROWS = 10
+GRID_COLS = 20
+PEAK_THRESHOLD = 15  
+QUEUE_SPLIT_THRESHOLD = 12
+SMOOTHING_FACTOR = 0.2  
 
-# Open webcam for live video capture (0 = default webcam)
-cap = cv2.VideoCapture('/content/your_video.mp4')  # Change to video file path if needed
+def estimate_wait_time(queue_length):
+    base_time = 2  
+    return queue_length * base_time
 
-while cap.isOpened():
-    ret, frame = cap.read()
-    if not ret:
-        break
+def process_video():
+    cap = cv2.VideoCapture("QueueOutside.mp4")
+    
+    frame_width = int(cap.get(3))
+    frame_height = int(cap.get(4))
+    cell_width = frame_width // GRID_COLS
+    cell_height = frame_height // GRID_ROWS
 
-    # Run YOLOv8 for object detection
-    results = model(frame)
-    persons_detected = [obj for obj in results[0].boxes.data if obj[5] == 0 and obj[4] > 0.5]  # Class 0 = Person, Confidence > 50%
+    ema_queue_size = 0.0
+    active_queues = 1  
 
-    uneasiness_detected = False
-    uneasiness_reason = []
+    while cap.isOpened():
+        ret, frame = cap.read()
+        if not ret:
+            break
 
-    for person in persons_detected:
-        x1, y1, x2, y2, conf, cls = map(int, person.tolist())
+        results = model(frame)
+        grid = np.zeros((GRID_ROWS, GRID_COLS), dtype=int)
 
-        # Extract face for emotion detection
-        face = frame[y1:y2, x1:x2]
-        emotion = analyze_face(face)
+        queue_size = 0
+        for result in results:
+            boxes = result.boxes.xyxy.cpu().numpy()
+            class_ids = result.boxes.cls.cpu().numpy()
 
-        # Analyze body language
-        body_landmarks = analyze_body(frame)
+            for box, class_id in zip(boxes, class_ids):
+                if class_id == 0:  # Only count people
+                    x1, y1, x2, y2 = map(int, box)
+                    cx, cy = (x1 + x2) // 2, (y1 + y2) // 2
+                    row, col = cy // cell_height, cx // cell_width
 
-        # Check for anxiety-related emotions
-        uneasy_emotions = ["fear", "sad", "surprise", "disgust", "angry"]
-        if emotion and emotion.lower() in uneasy_emotions:
-            uneasiness_detected = True
-            uneasiness_reason.append(f"Emotion: {emotion}")
+                    if 0 <= row < GRID_ROWS and 0 <= col < GRID_COLS:
+                        grid[row, col] += 1
+                        queue_size += 1
 
-        # Check for unusual body posture
-        if body_landmarks:
-            head_lowered = False
-            defensive_posture = False
-            hands_raised = False
+        required_staff = max(1, int(ema_queue_size / 3))  
+        ema_queue_size = SMOOTHING_FACTOR * queue_size + (1 - SMOOTHING_FACTOR) * ema_queue_size
+        avg_wait_time = estimate_wait_time(queue_size)
 
-            # Get key body points
-            nose = body_landmarks.landmark[mp_pose.PoseLandmark.NOSE]
-            left_hand = body_landmarks.landmark[mp_pose.PoseLandmark.LEFT_WRIST]
-            right_hand = body_landmarks.landmark[mp_pose.PoseLandmark.RIGHT_WRIST]
-            left_shoulder = body_landmarks.landmark[mp_pose.PoseLandmark.LEFT_SHOULDER]
-            right_shoulder = body_landmarks.landmark[mp_pose.PoseLandmark.RIGHT_SHOULDER]
+        if queue_size > PEAK_THRESHOLD:
+            required_cashiers = min(5, required_staff // 3 + 1)
+            required_cooks = min(6, required_staff // 2)
+            required_servers = required_staff - required_cashiers - required_cooks
+        else:
+            required_cashiers = max(1, required_staff // 4)
+            required_cooks = max(1, required_staff // 3)
+            required_servers = required_staff - required_cashiers - required_cooks
 
-            # Head lowered (nose below shoulders)
-            if nose.y > left_shoulder.y and nose.y > right_shoulder.y:
-                head_lowered = True
-                uneasiness_reason.append("Head lowered (possible distress)")
+        required_cashiers = max(1, required_cashiers)
+        required_cooks = max(1, required_cooks)
+        required_servers = max(1, required_servers)
 
-            # Defensive posture (shoulders raised or hands close to face)
-            if left_hand.y < left_shoulder.y or right_hand.y < right_shoulder.y:
-                defensive_posture = True
-                uneasiness_reason.append("Defensive posture detected")
+        max_people = np.max(grid) if np.max(grid) > 0 else 1
+        heatmap = (grid / max_people).tolist()
 
-            # Hands raised above head
-            if left_hand.y < 0.3 or right_hand.y < 0.3:
-                hands_raised = True
-                uneasiness_reason.append("Raised hands detected")
+        avg_wait_time = estimate_wait_time(queue_size)
+        
+        # ---- Separate Active and Suggested Queues ----
+        if queue_size > 0:
+            active_queue_sizes = [queue_size]
+            active_wait_times = [avg_wait_time]
+        else:
+            active_queue_sizes = [1]  # Ensure at least 1 queue exists
+            active_wait_times = [2]  # Default wait time
 
-            # If any body language signs are detected, mark as uneasy
-            if head_lowered or defensive_posture or hands_raised:
-                uneasiness_detected = True
+        suggested_queues = 1
+        suggested_queue_sizes = [queue_size] if queue_size > 0 else [1]
+        suggested_wait_times = [avg_wait_time] if queue_size > 0 else [2]
 
-        # Draw bounding box and label
-        color = (0, 0, 255) if uneasiness_detected else (0, 255, 0)
-        cv2.rectangle(frame, (x1, y1), (x2, y2), color, 2)
-        label = "Uneasy" if uneasiness_detected else "Normal"
-        cv2.putText(frame, label, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
+        if queue_size > QUEUE_SPLIT_THRESHOLD:
+            suggested_queues = 2  
+            suggested_queue_sizes = [queue_size // 2, queue_size // 2]
+            suggested_wait_times = [estimate_wait_time(suggested_queue_sizes[0]), 
+                                    estimate_wait_time(suggested_queue_sizes[1])]
 
-    # Show real-time video with detections
-    cv2.imshow()("Real-Time Uneasiness Detection", frame)
+        # ---- Emit Updated Data ----
+        socketio.emit("update_grid", {
+            "grid": heatmap,
+            "queue_size": int(queue_size),
+            "wait_time":int(avg_wait_time),
+            "active_queues": active_queues,
+            "suggested_queues": suggested_queues,
+            "active_queue_sizes": active_queue_sizes,
+            "active_wait_times": active_wait_times,
+            "suggested_queue_sizes": suggested_queue_sizes,
+            "suggested_wait_times": suggested_wait_times,
+            "required_staff": int(required_staff),
+            "cashiers": int(required_cashiers),
+            "cooks": int(required_cooks),
+            "servers": int(required_servers)
+        })
 
-    # Press 'q' to exit
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
+        time.sleep(0.1)
+    
+    cap.release()
 
-cap.release()
-cv2.destroyAllWindows()
+@app.route("/")
+def index():
+    return "Resource allocation backend running."
+
+@socketio.on("connect")
+def connect():
+    print("Client connected.")
+    socketio.start_background_task(process_video)
+
+if __name__ == "__main__":
+    socketio.run(app, host="0.0.0.0", port=5000, debug=True)

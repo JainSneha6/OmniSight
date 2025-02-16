@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Sidebar = ({ isOpen, onClose, role, vendorType }) => {
   return (
     <div
-      className={`fixed top-0 left-0 h-full w-64 bg-[#643470] text-white transform ${
+      className={`fixed top-0 left-0 h-full w-64 bg-[#2E0249] text-white transform ${
         isOpen ? "translate-x-0" : "-translate-x-64"
       } transition-transform duration-300 ease-in-out shadow-lg z-50`}
     >
@@ -35,17 +36,36 @@ const Sidebar = ({ isOpen, onClose, role, vendorType }) => {
         <ul className="space-y-2">
           {role === "vendor" ? (
             <>
-              <li className="hover:bg-white hover:text-black text-center p-2 rounded">Targeted Marketing</li>
-              <li className="hover:bg-white hover:text-black text-center p-2 rounded">Dynamic Pricing</li>
-              <li className="hover:bg-white hover:text-black text-center p-2 rounded">Resource Allocation</li>
-              <li className="hover:bg-white hover:text-black text-center p-2 rounded">Wait Time Analysis</li>
+              <li className="hover:bg-white hover:text-black text-center p-2 rounded">
+                <Link to="/targeted-marketing">Targeted Marketing</Link>
+              </li>
+              <li className="hover:bg-white hover:text-black text-center p-2 rounded">
+                <Link to="/dynamic-pricing">Dynamic Pricing</Link>
+              </li>
+              <li className="hover:bg-white hover:text-black text-center p-2 rounded">
+                <Link to="/resource-allocation">Resource Allocation</Link>
+              </li>
+              <li className="hover:bg-white hover:text-black text-center p-2 rounded">
+                <Link to="/wait-time-analysis">Wait Time Analysis</Link>
+              </li>
+              <li className="hover:bg-white hover:text-black text-center p-2 rounded">
+                <Link to="/dynamic-queue-management">Dynamic Queue Management</Link>
+              </li>
             </>
           ) : (
             <>
-              <li className="hover:bg-white hover:text-black text-center p-2 rounded">Emergency Alert</li>
-              <li className="hover:bg-white hover:text-black text-center p-2 rounded">Demographics Analysis</li>
-              <li className="hover:bg-white hover:text-black text-center p-2 rounded">Crowd Management</li>
-              <li className="hover:bg-white hover:text-black text-center p-2 rounded">Access Management</li>
+              <li className="hover:bg-white hover:text-black text-center p-2 rounded">
+                <Link to="/emergency-alert">Emergency Alert</Link>
+              </li>
+              <li className="hover:bg-white hover:text-black text-center p-2 rounded">
+                <Link to="/demographics-analysis">Demographics Analysis</Link>
+              </li>
+              <li className="hover:bg-white hover:text-black text-center p-2 rounded">
+                <Link to="/crowd-management">Crowd Management</Link>
+              </li>
+              <li className="hover:bg-white hover:text-black text-center p-2 rounded">
+                <Link to="/access-management">Access Management</Link>
+              </li>
             </>
           )}
         </ul>

@@ -11,7 +11,7 @@ const Dashboard = () => {
   const vendorType = location.state?.vendorType || "General Vendor"; 
 
   return (
-    <div className="relative flex items-center justify-center min-h-screen bg-gradient-to-b from-[#643470] to-[#BF63D6] p-6">
+    <div className="relative flex items-center justify-center min-h-screen bg-gradient-to-b from-[#2E0249] to-[#8D33A5] p-6">
       {/* Sidebar (Shows based on role) */}
       <Sidebar 
         isOpen={isSidebarOpen} 
