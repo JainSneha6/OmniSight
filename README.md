@@ -28,50 +28,50 @@ This solution ensures **real-time insights**, **enhanced security**, and **seaml
 
 Our AI-powered venue management system enhances efficiency, security, and customer experience with real-time analytics and automation.  
 
-### Crowd Monitoring & Control  
+### **1. Crowd Monitoring & Control** 
 - Real-time people detection using **YOLOv8 (People Detection)**  
 - Heatmap-based congestion analysis using a **grid-based spatial mapping algorithm**  
 - Predictive modeling to prevent overcrowding  
 
-### Fire & Smoke Detection  
+### **2. Fire & Smoke Detection**  
 - AI-driven fire and smoke detection using **YOLOv8 (Custom Trained)**  
 - Instant alerts to security teams and venue management  
 - Integration with emergency response systems for faster action  
 
-### Threat Detection  
+### **3. Threat Detection**  
 - Identification of suspicious objects such as **unattended bags, knives, and hazardous items** using **YOLOv11s**  
 - Real-time alerts and notifications for security personnel  
 - Automated tracking of flagged objects using AI-powered object tracking  
 
-### Wait Time Analysis  
+### **4. Wait Time Analysis**  
 - Uses **Exponential Moving Average (EMA)** for queue size prediction  
 - Real-time **wait time estimation** based on queue length and predictive AI modeling  
 - Provides estimated service times to improve customer experience  
 
-### Dynamic Queue Management  
+### **5. Dynamic Queue Management**
 - AI-based **real-time queue optimization** for food stalls and event entry  
 - Smart allocation of waiting areas to reduce congestion  
 - Predictive adjustments to queue formations based on peak and off-peak hours  
 
-### Automated Food Stall Queue & Resource Allocation  
+### **6. Automated Food Stall Queue & Resource Allocation**  
 - AI-driven **staff allocation algorithm** to manage cashiers, cooks, and servers  
 - Predictive order flow analysis to prevent food stall bottlenecks  
 - Automated load balancing to ensure efficient food service  
 
-### Dynamic Pricing  
+### **7. Dynamic Pricing** 
 - AI-powered **real-time pricing adjustments** based on demand fluctuations  
 - Automated price increases during high demand and discounts during low demand  
 - Ensures revenue maximization while balancing customer satisfaction  
 
-### Targeted Marketing  
+### **8. Targeted Marketing**  
 - AI-driven **food detection using YOLOv11s (Custom Dataset)** to track demand  
 - Personalized promotions based on real-time food stall activity  
 - Automated special deals and discounts for low-demand items
 
 This system ensures efficient crowd flow, reduced wait times, enhanced security, and optimized business operations.  
 
-  ![image](https://github.com/user-attachments/assets/a15ae4b6-350e-4ea1-a952-720d0a35c25b)
-  ![image](https://github.com/user-attachments/assets/1d301cee-afc2-42f7-8b5a-024651dbad92)
+![image](https://github.com/user-attachments/assets/a15ae4b6-350e-4ea1-a952-720d0a35c25b)
+![image](https://github.com/user-attachments/assets/1d301cee-afc2-42f7-8b5a-024651dbad92)
 
 ---
 
@@ -79,10 +79,10 @@ This system ensures efficient crowd flow, reduced wait times, enhanced security,
 
 | Model | Purpose | Technology |
 |------------|-------------|------------|
-| Fire & Smoke Detection | Detects fire hazards | YOLOv8 (Custom Trained) |
-| Crowd Management | Monitors crowd density and flow | YOLOv8 (People Detection) |
-| Food Detection | Recognizes food items at stalls | YOLOv11s (Custom Dataset) |
-| Dangerous Object Detection | Identifies objects like suitcases and knives | YOLOv11s |
+| **Fire & Smoke Detection** | Detects fire hazards | YOLOv8 (Custom Trained) |
+| **Crowd Management** | Monitors crowd density and flow | YOLOv8 (People Detection) |
+| **Food Detection** | Recognizes food items at stalls | YOLOv11s (Custom Dataset) |
+| **Dangerous Object Detection** | Identifies objects like suitcases and knives | YOLOv11s |
 
 ---
 
@@ -90,19 +90,19 @@ This system ensures efficient crowd flow, reduced wait times, enhanced security,
 
 Our system seamlessly integrates with the **Nx Developer Toolkit** to enhance real-time video analytics, security monitoring, and AI-driven automation.  
 
-### Nx Meta Server & Nx Cloud
+### **1. Nx Meta Server & Nx Cloud**
 - Manages **RTSP video streams, test cameras, AI models, and cloud storage**  
 - Ensures **secure, scalable, and real-time AI processing**  
 
-### Nx Meta Client
+### **2. Nx Meta Client**
 - Displays **live video feeds from Nx Meta Server**  
 - Enables **remote monitoring and decision-making**  
 
-### Nx Video Analytics Plugin
+### **3. Nx Video Analytics Plugin**
 - Records **live video streams** and integrates with **YOLOv8, YOLOv11 & OpenCV models**  
 - Processes **crowd detection, fire & smoke detection, and object identification**  
 
-### Nx AI Manager
+### **4. Nx AI Manager**
 - Deploys **custom-trained AI models** for:  
   - **Fire & Smoke Detection** - `YOLOv8s trained on custom dataset`  
   - **Food Detection** - `YOLOv11s`  
@@ -134,6 +134,7 @@ This **Nx-powered integration** ensures **optimized venue management**, **faster
 |               | Nx Video Analytics Plugin     | Integrates AI models for real-time video analysis  |
 |               | Nx AI Manager                 | Deploys and manages trained AI models  |
 
+![image](https://github.com/user-attachments/assets/1cc0c953-3044-44a8-b278-952973bc6b3d)
 
 ---
 
@@ -141,7 +142,7 @@ This **Nx-powered integration** ensures **optimized venue management**, **faster
 
 ![image](https://github.com/user-attachments/assets/0df53a3c-0582-40c4-9813-c008399dbff4)
 
-### **Real-Time Heatmap Generation**
+### **1. Real-Time Heatmap Generation**
 
 A **grid-based spatial mapping algorithm** tracks people’s movement, creating live heatmaps.  
 
@@ -157,7 +158,7 @@ col = cx / cell_width
 ```
 <div align="center"> <img src="https://github.com/user-attachments/assets/23804a97-fd6d-43d5-9c1a-de3f14efd4c6" width="600px"> </div>
 
-### **Exponential Moving Average for Queue Smoothing**
+### **2. Exponential Moving Average for Queue Smoothing**
 
 To prevent erratic queue size fluctuations, an **Exponential Moving Average (EMA) algorithm** smooths the data:
 
@@ -172,7 +173,7 @@ EMA_Size = α * Queue_size + (1 - α) * EMASize
 ```
 <div align="center"> <img src="https://github.com/user-attachments/assets/40381e65-14d9-41e0-97fa-597a54b20c1e" width="600px"> </div>
 
-### **Wait time estimation algorithm**
+### **3. Wait time estimation algorithm**
 
 Wait time is estimated dynamically.
 
@@ -188,7 +189,7 @@ Wait_Time = Queue_length * Base Time
 
 <div align="center"> <img src="https://github.com/user-attachments/assets/52d84409-a7db-481c-9f7e-98ee2e70902b" width="600px"> </div>
 
-### **Dynamic Staff Allocation Algorithm**
+### **4. Dynamic Staff Allocation Algorithm**
 
 The system optimizes staff allocation based on real-time queue size.
 
@@ -207,7 +208,7 @@ servers = required_staff - cashiers - cooks
 
 <div align="center"> <img src="https://github.com/user-attachments/assets/daa166b3-02a9-49c9-a1e6-32a2ec896a5c" width="600px"> </div>
 
-### **Dynamic Pricing** 
+### **5. Dynamic Pricing** 
 
 The system dynamically adjusts pricing and marketing based on demand.
 
@@ -232,7 +233,7 @@ The system dynamically adjusts pricing and marketing based on demand.
 
 <div align="center"> <img src="https://github.com/user-attachments/assets/ecd7517a-b779-448b-ad19-4a65f35e6478" width="600px"> </div>
 
-### **Targeted Marketing**
+### **6. Targeted Marketing**
 
 Marketing messages are generated based on real-time food stall demand.
 
