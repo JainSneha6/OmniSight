@@ -107,14 +107,15 @@ Our system seamlessly integrates with the **Nx Developer Toolkit** to enhance re
   - **Threat Detection** - `YOLOv11s` 
 
 
-This **Nx-powered integration** ensures **optimized venue management**, **faster response times**, and **improved security**. 🚀  
+This **Nx-powered integration** ensures **optimized venue management**, **faster response times**, and **improved security**. 
 
+---
 
-## 🛠️ Tech Stack  
+## Tech Stack  
 **Backend**: Python (Flask)
 **Frontend**: React, Tailwind CSS  
 **AI Models**: YOLOv8, YOLOv11s (Custom trained)  
-**Nx Integration**: Nx Developer Toolkit  
+**Nx Integration**: Nx Meta Server & Client, Nx Cloud, Nx Video Analytics Plugin, Nx AI Manager
 
 ---
 
