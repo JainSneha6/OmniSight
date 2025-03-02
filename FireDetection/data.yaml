@@ -1,0 +1,13 @@
+train: C:/Users/hsura/Desktop/Projects/NX/train/images
+val: C:/Users/hsura/Desktop/Projects/NX/valid/images
+test: C:/Users/hsura/Desktop/Projects/NX/test/images
+
+nc: 2
+names: ['fire', 'smoke']
+
+roboflow:
+  workspace: fire-detection-uwol7
+  project: fire-detection-8icva
+  version: 1
+  license: Public Domain
+  url: https://universe.roboflow.com/fire-detection-uwol7/fire-detection-8icva/dataset/1

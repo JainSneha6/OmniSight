@@ -2,32 +2,32 @@ import { useState, useEffect } from "react";
 import io from "socket.io-client";
 import Sidebar from "./Sidebar";
 
-const socket = io("http://localhost:5001"); 
+const socket = io("http://localhost:5001");
 
 export default function DynamicPricing() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [pricingData, setPricingData] = useState([
-    { name: "Sandwich", actual: 50, suggested: 70 },
-    { name: "Pizza", actual: 100, suggested: 135 },
-    { name: "Donut", actual: 40, suggested: 80 },
-    { name: "Cake", actual: 60, suggested: 100 },
-    { name: "Hot dog", actual: 70, suggested: 90 },
+    { name: "Sandwich", actual: 50, suggested: 50 },
+    { name: "Pizza", actual: 100, suggested: 100 },
+    { name: "Donut", actual: 40, suggested: 40 },
+    { name: "Cake", actual: 60, suggested: 60 },
+    { name: "Hot dog", actual: 70, suggested: 70 },
   ]);
 
   useEffect(() => {
-    socket.on("update_food_data", (data) => {
-      const updatedPrices = data.updated_prices;
+    socket.on("update_marketing_data", (data) => {
+      if (!data.updated_prices) return;
 
       setPricingData((prevData) =>
         prevData.map((item) => ({
           ...item,
-          suggested: updatedPrices[item.name.toLowerCase()] || item.suggested,
+          suggested: data.updated_prices[item.name.toLowerCase()] || item.suggested,
         }))
       );
     });
 
     return () => {
-      socket.off("update_food_data"); 
+      socket.off("update_marketing_data");
     };
   }, []);
 
@@ -52,16 +52,21 @@ export default function DynamicPricing() {
           <span className="text-right">Suggested</span>
         </div>
 
-        {pricingData.map((item, index) => (
-          <div
-            key={index}
-            className="grid grid-cols-3 text-center py-3 border-b border-white/10 last:border-none text-lg transition-all duration-300 hover:bg-white/10 hover:scale-[1.02] rounded-lg"
-          >
-            <span className="text-left font-medium">{item.name}</span>
-            <span className="font-semibold">₹{item.actual}</span>
-            <span className="font-bold text-yellow-300">₹{item.suggested.toFixed(2)}</span>
-          </div>
-        ))}
+        {pricingData.map((item, index) => {
+          const priceChange = item.suggested - item.actual;
+          return (
+            <div
+              key={index}
+              className="grid grid-cols-3 text-center py-3 border-b border-white/10 last:border-none text-lg transition-all duration-300 hover:bg-white/10 hover:scale-[1.02] rounded-lg"
+            >
+              <span className="text-left font-medium">{item.name}</span>
+              <span className="font-semibold">₹{item.actual}</span>
+              <span className={`font-bold ${priceChange > 0 ? "text-red-400" : priceChange < 0 ? "text-green-400" : "text-yellow-300"}`}>
+                ₹{item.suggested.toFixed(2)}
+              </span>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

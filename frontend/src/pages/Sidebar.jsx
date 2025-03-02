@@ -57,9 +57,6 @@ const Sidebar = ({ isOpen, onClose, role, vendorType }) => {
               <li className="hover:bg-white hover:text-black text-center p-2 rounded">
                 <Link to="/crowd-management">Crowd Management</Link>
               </li>
-              <li className="hover:bg-white hover:text-black text-center p-2 rounded">
-                <Link to="/access-management">Access Management</Link>
-              </li>
             </>
           )}
         </ul>

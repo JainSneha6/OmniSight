@@ -1,18 +1,16 @@
+import eventlet
+eventlet.monkey_patch()
 import time
 import numpy as np
-import eventlet
 from flask import Flask
 from flask_socketio import SocketIO
 from ultralytics import YOLO
 import cv2
 
-eventlet.monkey_patch()
-
 app = Flask(__name__)
 socketio = SocketIO(app, cors_allowed_origins="*")
 
-# Load YOLO model
-model = YOLO("yolov8n.pt")
+model = YOLO("models/yolov8s.pt")
 
 GRID_ROWS = 10
 GRID_COLS = 20
@@ -25,7 +23,7 @@ def estimate_wait_time(queue_length):
     return queue_length * base_time
 
 def process_video():
-    cap = cv2.VideoCapture("Queue.mp4")
+    cap = cv2.VideoCapture("videos/Queue.mp4")
     
     frame_width = int(cap.get(3))
     frame_height = int(cap.get(4))
@@ -49,7 +47,7 @@ def process_video():
             class_ids = result.boxes.cls.cpu().numpy()
 
             for box, class_id in zip(boxes, class_ids):
-                if class_id == 0:  # Only count people
+                if class_id == 0:  
                     x1, y1, x2, y2 = map(int, box)
                     cx, cy = (x1 + x2) // 2, (y1 + y2) // 2
                     row, col = cy // cell_height, cx // cell_width
@@ -80,13 +78,12 @@ def process_video():
 
         avg_wait_time = estimate_wait_time(queue_size)
         
-        # ---- Separate Active and Suggested Queues ----
         if queue_size > 0:
             active_queue_sizes = [queue_size]
             active_wait_times = [avg_wait_time]
         else:
-            active_queue_sizes = [1]  # Ensure at least 1 queue exists
-            active_wait_times = [2]  # Default wait time
+            active_queue_sizes = [1]  
+            active_wait_times = [2]  
 
         suggested_queues = 1
         suggested_queue_sizes = [queue_size] if queue_size > 0 else [1]
