@@ -72,8 +72,6 @@ Our AI-powered venue management system enhances efficiency, security, and custom
 
 This system ensures efficient crowd flow, reduced wait times, enhanced security, and optimized business operations.  
 
-
-
 ## AI Models Used  
 
 | Model | Purpose | Technology |
@@ -85,11 +83,21 @@ This system ensures efficient crowd flow, reduced wait times, enhanced security,
 
 ---
 
-## Real-Time Heatmap Generation  
+## 🛠️ Tech Stack  
+**Backend**: Python (Flask)
+**Frontend**: React, Tailwind CSS  
+**AI Models**: YOLOv8, YOLOv11s (Custom trained)  
+**Nx Integration**: Nx Developer Toolkit  
+
+---
+
+## Algorithmic Approach
+
+### Real-Time Heatmap Generation  
 
 A **grid-based spatial mapping algorithm** tracks people’s movement, creating live heatmaps.  
 
-### **Algorithm:**  
+#### **Algorithm:**  
 
 1. Capture real-time video feed and detect people.
 2. Map detected person’s centroid `(cx, cy)` onto a grid.
@@ -99,13 +107,13 @@ A **grid-based spatial mapping algorithm** tracks people’s movement, creating 
 row = cy / cell_height
 col = cx / cell_width
 ```
-![Crowd Management](https://github.com/user-attachments/assets/23804a97-fd6d-43d5-9c1a-de3f14efd4c6)
+<div align="center"> <img src="https://github.com/user-attachments/assets/23804a97-fd6d-43d5-9c1a-de3f14efd4c6" width="400px"> </div>
 
-## Exponential Moving Average for Queue Smoothing
+### Exponential Moving Average for Queue Smoothing
 
 To prevent erratic queue size fluctuations, an **Exponential Moving Average (EMA) algorithm** smooths the data:
 
-### **Algorithm:**  
+#### **Algorithm:**  
 
 1. Measure real-time queue size.
 2. Apply EMA smoothing to reduce sudden fluctuations.
@@ -114,14 +122,13 @@ To prevent erratic queue size fluctuations, an **Exponential Moving Average (EMA
 ```python
 EMA_Size = α * Queue_size + (1 - α) * EMASize
 ```
-
-![DynamicQueueManagement](https://github.com/user-attachments/assets/40381e65-14d9-41e0-97fa-597a54b20c1e)
+<div align="center"> <img src="https://github.com/user-attachments/assets/40381e65-14d9-41e0-97fa-597a54b20c1e" width="400px"> </div>
 
 ### Wait time estimation algorithm
 
 Wait time is estimated dynamically.
 
-### **Algorithm:**  
+#### **Algorithm:**  
 
 1. Measure queue length in real-time.
 2. Multiply queue length by the base service time per customer.
@@ -131,13 +138,13 @@ Wait time is estimated dynamically.
 Wait_Time = Queue_length * Base Time
 ```
 
-![WaitTimeAnalaysis](https://github.com/user-attachments/assets/52d84409-a7db-481c-9f7e-98ee2e70902b)
+<div align="center"> <img src="https://github.com/user-attachments/assets/52d84409-a7db-481c-9f7e-98ee2e70902b" width="400px"> </div>
 
 ### Dynamic Staff Allocation Algorithm
 
 The system optimizes staff allocation based on real-time queue size.
 
-### **Algorithm:**  
+#### **Algorithm:**  
 
 1. Compute required staff using EMA queue size.
 2. Assign cashiers, cooks, and servers dynamically.
@@ -150,14 +157,13 @@ cooks = min(6, required_staff / 2)
 servers = required_staff - cashiers - cooks
 ```
 
-![ResourceAllocation](https://github.com/user-attachments/assets/daa166b3-02a9-49c9-a1e6-32a2ec896a5c)
-
+<div align="center"> <img src="https://github.com/user-attachments/assets/daa166b3-02a9-49c9-a1e6-32a2ec896a5c" width="400px"> </div>
 
 ### Dynamic Pricing 
 
 The system dynamically adjusts pricing and marketing based on demand.
 
-### **Algorithm:**  
+#### **Algorithm:**  
 1. Monitor food demand.
 2. Adjust pricing based on thresholds:
      - Increase price during high demand.
@@ -170,14 +176,13 @@ elif demand < LOW_THRESHOLD:
     price *= 0.8  # Offer discounts for low-demand items
 ```
 
-![DynamicPricing](https://github.com/user-attachments/assets/ecd7517a-b779-448b-ad19-4a65f35e6478)
+<div align="center"> <img src="https://github.com/user-attachments/assets/ecd7517a-b779-448b-ad19-4a65f35e6478" width="400px"> </div>
 
-
-## Targeted Marketing
+### Targeted Marketing
 
 Marketing messages are generated based on real-time food stall demand.
 
-### **Algorithm:**  
+#### **Algorithm:**  
 1. Check food demand levels.
 2. Display different marketing messages based on sales.
 
@@ -190,8 +195,7 @@ elif count <= LOW_DEMAND_THRESHOLD:
     message = f"Special deal on {food.capitalize()}! Limited time offer."
 ```
 
-![TargetedMarketing](https://github.com/user-attachments/assets/cda5f0e7-1f52-4ebb-b596-1682649c1e0a)
-
+<div align="center"> <img src="https://github.com/user-attachments/assets/cda5f0e7-1f52-4ebb-b596-1682649c1e0a" width="400px"> </div>
 
 
 
