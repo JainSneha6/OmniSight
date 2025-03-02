@@ -66,11 +66,14 @@ Our AI-powered venue management system enhances efficiency, security, and custom
 ### Targeted Marketing  
 - AI-driven **food detection using YOLOv11s (Custom Dataset)** to track demand  
 - Personalized promotions based on real-time food stall activity  
-- Automated special deals and discounts for low-demand items  
-
----
+- Automated special deals and discounts for low-demand items
 
 This system ensures efficient crowd flow, reduced wait times, enhanced security, and optimized business operations.  
+
+  ![image](https://github.com/user-attachments/assets/a15ae4b6-350e-4ea1-a952-720d0a35c25b)
+  ![image](https://github.com/user-attachments/assets/1d301cee-afc2-42f7-8b5a-024651dbad92)
+
+---
 
 ## AI Models Used  
 
@@ -109,6 +112,14 @@ Our system seamlessly integrates with the **Nx Developer Toolkit** to enhance re
 
 This **Nx-powered integration** ensures **optimized venue management**, **faster response times**, and **improved security**. 
 
+![image](https://github.com/user-attachments/assets/4f2807cc-9698-44d2-895d-b983e168bcaf)
+
+---
+
+## Architecture Diagram
+
+![image](https://github.com/user-attachments/assets/e0bab392-5fc2-4491-8146-51685f58c615)
+
 ---
 
 ## Tech Stack  
@@ -120,6 +131,8 @@ This **Nx-powered integration** ensures **optimized venue management**, **faster
 ---
 
 ## Algorithmic Approach
+
+![image](https://github.com/user-attachments/assets/0df53a3c-0582-40c4-9813-c008399dbff4)
 
 ### Real-Time Heatmap Generation  
 
@@ -135,7 +148,7 @@ A **grid-based spatial mapping algorithm** tracks people’s movement, creating 
 row = cy / cell_height
 col = cx / cell_width
 ```
-<div align="center"> <img src="https://github.com/user-attachments/assets/23804a97-fd6d-43d5-9c1a-de3f14efd4c6" width="400px"> </div>
+<div align="center"> <img src="https://github.com/user-attachments/assets/23804a97-fd6d-43d5-9c1a-de3f14efd4c6" width="600px"> </div>
 
 ### Exponential Moving Average for Queue Smoothing
 
@@ -150,7 +163,7 @@ To prevent erratic queue size fluctuations, an **Exponential Moving Average (EMA
 ```python
 EMA_Size = α * Queue_size + (1 - α) * EMASize
 ```
-<div align="center"> <img src="https://github.com/user-attachments/assets/40381e65-14d9-41e0-97fa-597a54b20c1e" width="400px"> </div>
+<div align="center"> <img src="https://github.com/user-attachments/assets/40381e65-14d9-41e0-97fa-597a54b20c1e" width="600px"> </div>
 
 ### Wait time estimation algorithm
 
@@ -166,7 +179,7 @@ Wait time is estimated dynamically.
 Wait_Time = Queue_length * Base Time
 ```
 
-<div align="center"> <img src="https://github.com/user-attachments/assets/52d84409-a7db-481c-9f7e-98ee2e70902b" width="400px"> </div>
+<div align="center"> <img src="https://github.com/user-attachments/assets/52d84409-a7db-481c-9f7e-98ee2e70902b" width="600px"> </div>
 
 ### Dynamic Staff Allocation Algorithm
 
@@ -185,26 +198,32 @@ cooks = min(6, required_staff / 2)
 servers = required_staff - cashiers - cooks
 ```
 
-<div align="center"> <img src="https://github.com/user-attachments/assets/daa166b3-02a9-49c9-a1e6-32a2ec896a5c" width="400px"> </div>
+<div align="center"> <img src="https://github.com/user-attachments/assets/daa166b3-02a9-49c9-a1e6-32a2ec896a5c" width="600px"> </div>
 
 ### Dynamic Pricing 
 
 The system dynamically adjusts pricing and marketing based on demand.
 
 #### **Algorithm:**  
-1. Monitor food demand.
-2. Adjust pricing based on thresholds:
-     - Increase price during high demand.
-     - Decrease price when demand is low.
+1. Retrieve **current food demand** from sales data.  
+2. For each food item:  
+   - Check if demand is **high** (≥ HIGH_DEMAND_THRESHOLD).  
+     - **Increase price** by 20%.  
+   - Check if demand is **low** (≤ LOW_DEMAND_THRESHOLD).  
+     - **Decrease price** by 20%.  
+   - Otherwise, **keep the base price**.  
+3. Update prices dynamically and apply changes to the system.  
 
 ```python
-if demand > HIGH_THRESHOLD:
-    price *= 1.2  # Increase price for high-demand items
-elif demand < LOW_THRESHOLD:
-    price *= 0.8  # Offer discounts for low-demand items
+  if count >= HIGH_DEMAND_THRESHOLD:
+      price = round(base_price * 1.2, 2)  # Increase by 20%
+  elif count <= LOW_DEMAND_THRESHOLD:
+      price = round(base_price * 0.8, 2)  # Decrease by 20%
+  else:
+      price = base_price  # Keep base price
 ```
 
-<div align="center"> <img src="https://github.com/user-attachments/assets/ecd7517a-b779-448b-ad19-4a65f35e6478" width="400px"> </div>
+<div align="center"> <img src="https://github.com/user-attachments/assets/ecd7517a-b779-448b-ad19-4a65f35e6478" width="600px"> </div>
 
 ### Targeted Marketing
 
@@ -223,4 +242,35 @@ elif count <= LOW_DEMAND_THRESHOLD:
     message = f"Special deal on {food.capitalize()}! Limited time offer."
 ```
 
-<div align="center"> <img src="https://github.com/user-attachments/assets/cda5f0e7-1f52-4ebb-b596-1682649c1e0a" width="400px"> </div>
+<div align="center"> <img src="https://github.com/user-attachments/assets/cda5f0e7-1f52-4ebb-b596-1682649c1e0a" width="600px"> </div>
+
+---
+
+## Users  
+
+OmniSight is designed for professionals managing large venues, ensuring security, efficiency, and customer satisfaction with AI-driven automation.  
+
+### **1. Venue Managers & Event Organizers**  
+- Monitor **crowd movement** and prevent congestion.  
+- Optimize **staff allocation** and facility layout.  
+- Analyze **queue formations & wait times**.  
+- Enhance customer experience by **reducing wait times**.  
+- Optimize **entry/exit flows** for smooth crowd movement.  
+
+### **2. Security Teams & Emergency Response**  
+- Detect **suspicious objects** in real time.  
+- AI-driven **fire & smoke detection**.  
+- Receive **instant alerts** for security threats.   
+- Automate **evacuation & emergency response**.   
+
+### **3. Food Stall Operators**  
+- AI-powered **queue management** for faster service.  
+- **Automate pricing & promotions** dynamically.  
+- Predict **order surges & optimize resources**.  
+
+OmniSight enhances venue management with **AI-driven security, real-time analytics, and automated crowd control**.  
+
+![image](https://github.com/user-attachments/assets/8051f486-1e5a-4710-b342-01ba8e27318a)
+![image](https://github.com/user-attachments/assets/974d5a7c-0a5a-4216-b69b-01103e00ce7b)
+
+
