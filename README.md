@@ -123,10 +123,17 @@ This **Nx-powered integration** ensures **optimized venue management**, **faster
 ---
 
 ## Tech Stack  
-**Backend**: Python (Flask)
-**Frontend**: React, Tailwind CSS  
-**AI Models**: YOLOv8, YOLOv11s (Custom trained)  
-**Nx Integration**: Nx Meta Server & Client, Nx Cloud, Nx Video Analytics Plugin, Nx AI Manager
+
+| Component       | Technology Used                           | Purpose                                  |
+|---------------|----------------------------------|------------------------------------------|
+| **Backend**   | Python (Flask)                 | Handles API requests and business logic  |
+| **Frontend**  | React, Tailwind CSS            | Provides user interface and real-time dashboards  |
+| **AI Models** | YOLOv8, YOLOv11s (Custom trained) | Detects people, objects, fire, and food items  |
+| **Nx Integration** | Nx Meta Server & Client  | Manages video streams and AI model integration |
+|               | Nx Cloud                      | Provides cloud-based video storage and processing  |
+|               | Nx Video Analytics Plugin     | Integrates AI models for real-time video analysis  |
+|               | Nx AI Manager                 | Deploys and manages trained AI models  |
+
 
 ---
 
@@ -134,7 +141,7 @@ This **Nx-powered integration** ensures **optimized venue management**, **faster
 
 ![image](https://github.com/user-attachments/assets/0df53a3c-0582-40c4-9813-c008399dbff4)
 
-### Real-Time Heatmap Generation  
+### **Real-Time Heatmap Generation**
 
 A **grid-based spatial mapping algorithm** tracks people’s movement, creating live heatmaps.  
 
@@ -150,7 +157,7 @@ col = cx / cell_width
 ```
 <div align="center"> <img src="https://github.com/user-attachments/assets/23804a97-fd6d-43d5-9c1a-de3f14efd4c6" width="600px"> </div>
 
-### Exponential Moving Average for Queue Smoothing
+### **Exponential Moving Average for Queue Smoothing**
 
 To prevent erratic queue size fluctuations, an **Exponential Moving Average (EMA) algorithm** smooths the data:
 
@@ -165,7 +172,7 @@ EMA_Size = α * Queue_size + (1 - α) * EMASize
 ```
 <div align="center"> <img src="https://github.com/user-attachments/assets/40381e65-14d9-41e0-97fa-597a54b20c1e" width="600px"> </div>
 
-### Wait time estimation algorithm
+### **Wait time estimation algorithm**
 
 Wait time is estimated dynamically.
 
@@ -181,7 +188,7 @@ Wait_Time = Queue_length * Base Time
 
 <div align="center"> <img src="https://github.com/user-attachments/assets/52d84409-a7db-481c-9f7e-98ee2e70902b" width="600px"> </div>
 
-### Dynamic Staff Allocation Algorithm
+### **Dynamic Staff Allocation Algorithm**
 
 The system optimizes staff allocation based on real-time queue size.
 
@@ -200,7 +207,7 @@ servers = required_staff - cashiers - cooks
 
 <div align="center"> <img src="https://github.com/user-attachments/assets/daa166b3-02a9-49c9-a1e6-32a2ec896a5c" width="600px"> </div>
 
-### Dynamic Pricing 
+### **Dynamic Pricing** 
 
 The system dynamically adjusts pricing and marketing based on demand.
 
@@ -225,7 +232,7 @@ The system dynamically adjusts pricing and marketing based on demand.
 
 <div align="center"> <img src="https://github.com/user-attachments/assets/ecd7517a-b779-448b-ad19-4a65f35e6478" width="600px"> </div>
 
-### Targeted Marketing
+### **Targeted Marketing**
 
 Marketing messages are generated based on real-time food stall demand.
 
@@ -272,5 +279,45 @@ OmniSight enhances venue management with **AI-driven security, real-time analyti
 
 ![image](https://github.com/user-attachments/assets/8051f486-1e5a-4710-b342-01ba8e27318a)
 ![image](https://github.com/user-attachments/assets/974d5a7c-0a5a-4216-b69b-01103e00ce7b)
+
+## How OmniSight Enhances Venue Management  
+
+OmniSight transforms **venue management** by leveraging AI-powered automation and real-time analytics to streamline operations, enhance security, and improve the customer experience.  
+
+### 1. **Optimized Crowd Flow & Reduced Congestion**  
+- **Real-time people detection (YOLOv8)** monitors crowd density at entry points, walkways, and gathering areas.  
+- **Heatmap-based congestion analysis** predicts high-traffic zones, allowing dynamic crowd redirection.  
+- **AI-driven queue management** prevents bottlenecks at event entrances, food stalls, and restrooms.  
+
+### 2. **Enhanced Security & Threat Detection**  
+- **AI-powered object detection (YOLOv11s)** identifies unattended items, hazardous objects, and suspicious behavior.  
+- **Fire & smoke detection (YOLOv8 Custom Trained)** ensures immediate alerts for fire hazards.  
+- **Seamless integration with Nx Meta Server & Nx Cloud** provides real-time security monitoring.  
+
+### 3. **Faster Emergency Response & Safety Measures**  
+- **Automated emergency alerts** notify security teams instantly in case of threats or hazards.  
+- **Integration with emergency response systems** speeds up fire, medical, and security interventions.  
+- **Live video analytics** allow remote monitoring for quick decision-making.  
+
+### 4. **Improved Customer Experience & Shorter Wait Times**  
+- **Exponential Moving Average (EMA) queue analysis** predicts and manages wait times dynamically.  
+- **AI-powered queue allocation** optimizes waiting areas, reducing frustration and improving service speed.  
+- **Real-time wait time estimation** keeps visitors informed and enhances satisfaction.  
+
+### 5. **Optimized Food Stall Operations & Resource Management**  
+- **Dynamic staff allocation** adjusts the number of cashiers, cooks, and servers based on demand.  
+- **Predictive order flow analysis** prevents long queues and improves service efficiency.  
+- **Automated load balancing** ensures optimal stall performance.  
+
+### 6. **Revenue Maximization & Intelligent Pricing**  
+- **Dynamic pricing algorithms** adjust food and service prices based on real-time demand.  
+- **Targeted AI-driven marketing** personalizes promotions to boost sales and optimize inventory.  
+- **Automated discounts & surge pricing** help balance customer demand while maximizing revenue.  
+
+With **OmniSight**, venue managers achieve **seamless event operations, enhanced security, and optimized customer experiences**, ensuring smooth and efficient venue management.  
+
+
+![image](https://github.com/user-attachments/assets/9645ebb6-8707-4e35-9efd-aad46a0c8ba7)
+
 
 
