@@ -83,6 +83,33 @@ This system ensures efficient crowd flow, reduced wait times, enhanced security,
 
 ---
 
+## Nx Integration  
+
+Our system seamlessly integrates with the **Nx Developer Toolkit** to enhance real-time video analytics, security monitoring, and AI-driven automation.  
+
+### Nx Meta Server & Nx Cloud
+- Manages **RTSP video streams, test cameras, AI models, and cloud storage**  
+- Ensures **secure, scalable, and real-time AI processing**  
+
+### Nx Meta Client
+- Displays **live video feeds from Nx Meta Server**  
+- Enables **remote monitoring and decision-making**  
+
+### Nx Video Analytics Plugin
+- Records **live video streams** and integrates with **YOLOv8, YOLOv11 & OpenCV models**  
+- Processes **crowd detection, fire & smoke detection, and object identification**  
+
+### Nx AI Manager
+- Deploys **custom-trained AI models** for:  
+  - **Fire & Smoke Detection** - `YOLOv8s trained on custom dataset`  
+  - **Food Detection** - `YOLOv11s`  
+  - **Crowd Management** - `YOLOv8s`  
+  - **Threat Detection** - `YOLOv11s` 
+
+
+This **Nx-powered integration** ensures **optimized venue management**, **faster response times**, and **improved security**. 🚀  
+
+
 ## 🛠️ Tech Stack  
 **Backend**: Python (Flask)
 **Frontend**: React, Tailwind CSS  
@@ -196,6 +223,3 @@ elif count <= LOW_DEMAND_THRESHOLD:
 ```
 
 <div align="center"> <img src="https://github.com/user-attachments/assets/cda5f0e7-1f52-4ebb-b596-1682649c1e0a" width="400px"> </div>
-
-
-
