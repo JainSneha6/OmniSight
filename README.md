@@ -82,7 +82,7 @@ This system ensures efficient crowd flow, reduced wait times, enhanced security,
 | **Fire & Smoke Detection** | Detects fire hazards | YOLOv8 (Custom Trained) |
 | **Crowd Management** | Monitors crowd density and flow | YOLOv8 (People Detection) |
 | **Food Detection** | Recognizes food items at stalls | YOLOv11s (Custom Dataset) |
-| **Dangerous Object Detection** | Identifies objects like suitcases and knives | YOLOv11s |
+| **Threat Detection** | Identifies objects like suitcases and knives | YOLOv11s |
 
 ---
 
