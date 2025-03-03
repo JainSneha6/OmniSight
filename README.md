@@ -1,5 +1,28 @@
 # OmniSight - AI Pioneered Intelligent Crowd and Safety System
 
+## OmniSight - AI Pioneered Intelligent Crowd and Safety System  
+
+| **#** | **Section** | **Description** |
+|------|------------|----------------|
+| 1 | [Video Link](#video-links) | Links to project video and presentation |
+| 2 | [PPT Links](#ppt-links) | Links to project video and presentation |
+| 2 | [Project Setup](#project-setup) | Step-by-step setup guide for OmniSight |
+| 3 | [Problem Statement](#problem-statement) | Challenges faced in venue management |
+| 4 | [Introduction](#introduction) | Overview of OmniSight’s AI-powered solution |
+| 5 | [Features](#features) | List of AI-driven functionalities |
+| 6 | [AI Models Used](#ai-models-used) | Details of YOLO-based AI models |
+| 7 | [Nx Integration](#nx-integration) | Integration with Nx Meta Server & Cloud |
+| 8 | [Fire and Smoke Detection](#fire-and-smoke-detection) | AI-based fire & smoke identification |
+| 9 | [Crowd Detection](#crowd-detection) | Real-time people detection & heatmaps |
+| 10 | [Food Detection](#food-detection) | AI-powered food recognition & tracking |
+| 11 | [Threat Detection](#threat-detection) | Detection of suspicious objects |
+| 12 | [Architecture Diagram](#architecture-diagram) | Overview of system architecture |
+| 13 | [Tech Stack](#tech-stack) | Technologies used in backend, frontend, and AI models |
+| 14 | [Algorithmic Approach](#algorithmic-approach) | Explanation of AI algorithms used |
+| 15 | [Users](#users) | Who benefits from OmniSight? |
+| 16 | [How OmniSight Enhances Venue Management](#how-omnisight-enhances-venue-management) | AI-driven venue optimization |
+
+
 ## Video Link 
 - https://www.youtube.com/watch?v=KpVy29CemUc
 ---
