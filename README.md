@@ -1,7 +1,12 @@
 # OmniSight - AI Pioneered Intelligent Crowd and Safety System
 
-## Video Link - https://www.youtube.com/watch?v=KpVy29CemUc
-## PPT Link - https://docs.google.com/presentation/d/1Yvq1Lp7kJpUXC3dwPQZpuJmGmQN3n9K5EhcRBkSAVCU/edit#slide=id.gd1bf8d60a4_0_0
+## Video Link 
+- https://www.youtube.com/watch?v=KpVy29CemUc
+---
+
+## PPT Link -
+- https://docs.google.com/presentation/d/1Yvq1Lp7kJpUXC3dwPQZpuJmGmQN3n9K5EhcRBkSAVCU/edit#slide=id.gd1bf8d60a4_0_0
+---
 
 ## Problem Statement  
 
