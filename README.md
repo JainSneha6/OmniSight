@@ -2,8 +2,8 @@
 
 | **#** | **Section** | **Description** |
 |------|------------|----------------|
-| 1 | [Video Link](#video-links) | Links to project video and presentation |
-| 2 | [PPT Links](#ppt-links) | Links to project video and presentation |
+| 1 | [Video Link](#video-link) | Links to project video and presentation |
+| 2 | [PPT Link](#ppt-link) | Links to project video and presentation |
 | 2 | [Project Setup](#project-setup) | Step-by-step setup guide for OmniSight |
 | 3 | [Problem Statement](#problem-statement) | Challenges faced in venue management |
 | 4 | [Introduction](#introduction) | Overview of OmniSight’s AI-powered solution |
