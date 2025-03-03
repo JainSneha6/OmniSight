@@ -1,7 +1,5 @@
 # OmniSight - AI Pioneered Intelligent Crowd and Safety System
 
-## OmniSight - AI Pioneered Intelligent Crowd and Safety System  
-
 | **#** | **Section** | **Description** |
 |------|------------|----------------|
 | 1 | [Video Link](#video-links) | Links to project video and presentation |
