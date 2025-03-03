@@ -8,6 +8,78 @@
 - https://docs.google.com/presentation/d/1Yvq1Lp7kJpUXC3dwPQZpuJmGmQN3n9K5EhcRBkSAVCU/edit#slide=id.gd1bf8d60a4_0_0
 ---
 
+## Project Setup
+
+### **1. To Setup Nx Meta Server & Client**
+- https://nx.docs.scailable.net/nx-ai-manager/1.-install-network-optix
+
+### **2. To Setup Nx AI Manager**
+- https://nx.docs.scailable.net/nx-ai-manager/2.-install-nx-ai-manager-plugin
+
+### **3. To Setup Nx Test Camera**
+- https://support.networkoptix.com/hc/en-us/articles/360018067074-Testcamera-IP-Camera-Emulator 
+
+### **4. To Setup RTSP Video Stream**
+
+- Clone git repository
+```sh
+git clone https://github.com/JainSneha6/OmniSight.git
+```
+
+- Navigate to CameraStream folder
+
+```sh
+cd CameraStream
+```
+
+- Start the camera server
+```sh
+python camera.py
+```
+
+- Navigate to Nx Meta Client
+
+- Add device and set the link to rtsp as the ip address of the camera server
+
+### **5. Add Model to video stream using Nx AI Manager**
+
+### **6. Setup Frontend**
+
+- Navigate to Frontend Folder
+
+```sh
+cd frontend
+```
+
+- Install node modules
+
+```sh
+npm install
+```
+
+- Start the React app
+
+```sh
+npm run dev
+```
+
+### **7. Setup Backend**
+
+- Install the required modules
+
+- To access Event Manager side
+
+```sh
+python app_event.py
+```
+
+- To access vendor side
+
+```sh
+python app_foodstall.py
+python food.py
+```
+
 ## Problem Statement  
 
 Venue management is an increasingly complex challenge due to:  
@@ -96,6 +168,8 @@ This system ensures efficient crowd flow, reduced wait times, enhanced security,
 
 ## Nx Integration  
 
+![image](https://github.com/user-attachments/assets/4f2807cc-9698-44d2-895d-b983e168bcaf)
+
 Our system seamlessly integrates with the **Nx Developer Toolkit** to enhance real-time video analytics, security monitoring, and AI-driven automation.  
 
 ### **1. Nx Meta Server & Nx Cloud**
@@ -120,7 +194,7 @@ Our system seamlessly integrates with the **Nx Developer Toolkit** to enhance re
 
 This **Nx-powered integration** ensures **optimized venue management**, **faster response times**, and **improved security**. 
 
-![image](https://github.com/user-attachments/assets/4f2807cc-9698-44d2-895d-b983e168bcaf)
+![WhatsApp Image 2025-03-03 at 12 40 31_c87a7788](https://github.com/user-attachments/assets/e6fd96cc-e660-426f-ace7-d5ed3138ef3b)
 
 ---
 
@@ -134,7 +208,7 @@ This **Nx-powered integration** ensures **optimized venue management**, **faster
 
 | Component       | Technology Used                           | Purpose                                  |
 |---------------|----------------------------------|------------------------------------------|
-| **Backend**   | Python (Flask)                 | Handles API requests and business logic  |
+| **Backend**   | Python (Flask), Ultralytics, Pytorch, Cuda                 | Handles API requests and business logic  |
 | **Frontend**  | React, Tailwind CSS            | Provides user interface and real-time dashboards  |
 | **AI Models** | YOLOv8, YOLOv11s (Custom trained) | Detects people, objects, fire, and food items  |
 | **Nx Integration** | Nx Meta Server & Client  | Manages video streams and AI model integration |
@@ -142,8 +216,18 @@ This **Nx-powered integration** ensures **optimized venue management**, **faster
 |               | Nx Video Analytics Plugin     | Integrates AI models for real-time video analysis  |
 |               | Nx AI Manager                 | Deploys and manages trained AI models  |
 
-![image](https://github.com/user-attachments/assets/1cc0c953-3044-44a8-b278-952973bc6b3d)
+### **Fire & Smoke Detection**
+<div align="center"> <img src="https://github.com/user-attachments/assets/1cc0c953-3044-44a8-b278-952973bc6b3d" width="600px"> </div>
 
+### **Crowd Detection**
+<div align="center"> <img src="https://github.com/user-attachments/assets/3f7ad376-155c-46f2-a61d-702df02ba1cc" width="600px"> </div>
+
+### **Food Detection**
+<div align="center"> <img src="https://github.com/user-attachments/assets/621ee83a-59b5-4684-9278-7d978afc5feb" width="600px"> </div>
+<div align="center"> <img src="https://github.com/user-attachments/assets/4b1abdea-c8ae-4772-b410-4fdcba040ebb" width="600px"> </div>
+
+### **Threat Detection**
+<div align="center"> <img src="https://github.com/user-attachments/assets/26ee3caf-71fd-478a-ac14-0238049c3a10" width="600px"> </div>
 ---
 
 ## Algorithmic Approach
