@@ -187,6 +187,31 @@ This system ensures efficient crowd flow, reduced wait times, enhanced security,
 
 ---
 
+## Fire and Smoke Detection
+
+![WhatsApp Image 2025-03-03 at 12 40 31_c87a7788](https://github.com/user-attachments/assets/e6fd96cc-e660-426f-ace7-d5ed3138ef3b)
+
+---
+
+## Crowd Detection
+
+![WhatsApp Image 2025-03-03 at 12 43 45_5e673261](https://github.com/user-attachments/assets/2e2c9ec0-25af-43b6-a3c0-555512e79a39)
+
+---
+
+## Food Detection
+
+![WhatsApp Image 2025-03-03 at 12 44 34_c70c6cca](https://github.com/user-attachments/assets/d8ea70d4-7a17-48fe-8690-65ab523d2df1)
+![WhatsApp Image 2025-03-03 at 12 50 51_25549ba0](https://github.com/user-attachments/assets/63ccc1a2-c0c4-42d0-a7be-f59bac844469)
+
+---
+
+## Threat Detection
+
+![WhatsApp Image 2025-03-03 at 12 53 28_521e5c90](https://github.com/user-attachments/assets/e4fb94f6-ca04-4275-bc6f-3f5cfc62144d)
+
+---
+
 ## Nx Integration  
 
 ![image](https://github.com/user-attachments/assets/4f2807cc-9698-44d2-895d-b983e168bcaf)
@@ -214,24 +239,6 @@ Our system seamlessly integrates with the **Nx Developer Toolkit** to enhance re
 
 
 This **Nx-powered integration** ensures **optimized venue management**, **faster response times**, and **improved security**. 
-
-## Fire and Smoke Detection
-
-![WhatsApp Image 2025-03-03 at 12 40 31_c87a7788](https://github.com/user-attachments/assets/e6fd96cc-e660-426f-ace7-d5ed3138ef3b)
-
-## Crowd Detection
-
-![WhatsApp Image 2025-03-03 at 12 43 45_5e673261](https://github.com/user-attachments/assets/2e2c9ec0-25af-43b6-a3c0-555512e79a39)
-
-## Food Detection
-
-![WhatsApp Image 2025-03-03 at 12 44 34_c70c6cca](https://github.com/user-attachments/assets/d8ea70d4-7a17-48fe-8690-65ab523d2df1)
-![WhatsApp Image 2025-03-03 at 12 50 51_25549ba0](https://github.com/user-attachments/assets/63ccc1a2-c0c4-42d0-a7be-f59bac844469)
-
-## Threat Detection
-
-![WhatsApp Image 2025-03-03 at 12 53 28_521e5c90](https://github.com/user-attachments/assets/e4fb94f6-ca04-4275-bc6f-3f5cfc62144d)
-
 ---
 
 ## Architecture Diagram
