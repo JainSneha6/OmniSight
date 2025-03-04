@@ -259,18 +259,7 @@ This **Nx-powered integration** ensures **optimized venue management**, **faster
 |               | Nx Video Analytics Plugin     | Integrates AI models for real-time video analysis  |
 |               | Nx AI Manager                 | Deploys and manages trained AI models  |
 
-### **Fire & Smoke Detection**
 <div align="center"> <img src="https://github.com/user-attachments/assets/1cc0c953-3044-44a8-b278-952973bc6b3d" width="600px"> </div>
-
-### **Crowd Detection**
-<div align="center"> <img src="https://github.com/user-attachments/assets/3f7ad376-155c-46f2-a61d-702df02ba1cc" width="600px"> </div>
-
-### **Food Detection**
-<div align="center"> <img src="https://github.com/user-attachments/assets/621ee83a-59b5-4684-9278-7d978afc5feb" width="600px"> </div>
-<div align="center"> <img src="https://github.com/user-attachments/assets/4b1abdea-c8ae-4772-b410-4fdcba040ebb" width="600px"> </div>
-
-### **Threat Detection**
-<div align="center"> <img src="https://github.com/user-attachments/assets/26ee3caf-71fd-478a-ac14-0238049c3a10" width="600px"> </div>
 ---
 
 ## Algorithmic Approach
