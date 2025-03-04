@@ -259,7 +259,8 @@ This **Nx-powered integration** ensures **optimized venue management**, **faster
 |               | Nx Video Analytics Plugin     | Integrates AI models for real-time video analysis  |
 |               | Nx AI Manager                 | Deploys and manages trained AI models  |
 
-<div align="center"> <img src="https://github.com/user-attachments/assets/1cc0c953-3044-44a8-b278-952973bc6b3d" width="600px"> </div>
+![image](https://github.com/user-attachments/assets/1cc0c953-3044-44a8-b278-952973bc6b3d)
+
 ---
 
 ## Algorithmic Approach
